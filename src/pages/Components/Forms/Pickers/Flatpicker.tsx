@@ -5,7 +5,7 @@ import Flatpickr from 'react-flatpickr';
 
 
 const Flatpicker = () => {
-  document.title=" Pickers | Invoika Admin & Dashboard Template";
+  document.title=" Pickers | PULSE";
 
 
   // const date:any = new Date()

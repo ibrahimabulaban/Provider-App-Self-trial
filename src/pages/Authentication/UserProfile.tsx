@@ -21,7 +21,7 @@ import { createSelector } from "reselect";
 import { editProfile, resetProfileFlag } from "../../slices/profile/thunk";
 
 const UserProfile = () => {
-  document.title = "User Profile | Invoika Admin & Dashboard Template";
+  document.title = "User Profile | PULSE";
 
   const dispatch: any = useDispatch();
 

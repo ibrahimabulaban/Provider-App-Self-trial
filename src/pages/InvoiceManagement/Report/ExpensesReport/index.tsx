@@ -5,7 +5,7 @@ import { expensesReport } from '../../../../Common/data/index';
 import TableContainer from '../../../../Common/Tabledata/TableContainer';
 
 const ExpensesReport = () => {
-    document.title="Expenses Report | Invoika Admin & Dashboard Template";
+    document.title="Expenses Report | PULSE";
 
     interface columnsType {
         Header: any,

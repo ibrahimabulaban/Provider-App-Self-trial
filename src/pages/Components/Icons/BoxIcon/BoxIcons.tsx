@@ -4,7 +4,7 @@ import { Card, Col, Container, Row } from "react-bootstrap";
 
 
 const BoxIcons = () => {
-  document.title=" Boxicons | Invoika Admin & Dashboard Template";
+  document.title=" Boxicons | PULSE";
 
   return (
     <React.Fragment>

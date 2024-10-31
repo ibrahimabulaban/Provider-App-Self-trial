@@ -8,6 +8,8 @@ import * as Yup from "yup";
 import { useDispatch, useSelector } from 'react-redux';
 import { createSelector } from 'reselect';
 import { apiError, registerUser, resetRegisterFlag } from '../../slices/register/thunk';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '../../App';
 
 
 const Register = () => {
@@ -19,6 +21,21 @@ const Register = () => {
     const [passwordShow, setPasswordShow] = useState<any>(false);
     const [timer, setTimer] = useState<number>(0);
     const [loader, setLoader] = useState<boolean>(false);
+    const [email,setEmail]= useState('');
+    const [password,setPassword]= useState('');
+    const signUp = (e: React.FormEvent<HTMLFormElement>) =>{
+        e.preventDefault();
+        console.log("Email before sign up:", email); // Log email
+    console.log("Password before sign up:", password); // Log password
+        createUserWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+         console.log(userCredential)
+        }).catch((error) =>{
+            console.error("Error Code:", error.code);
+            console.error("Error Message:", error.message);
+            console.log("not working");
+        })
+     }
 
     const validation: any = useFormik({
         enableReinitialize: true,
@@ -111,11 +128,12 @@ const Register = () => {
                                                             <Form
                                                                 className="needs-validation"
                                                                 action="#"
-                                                                onSubmit={(e) => {
+                                                                onSubmit={signUp}
+                                                                /*{(e) => {
                                                                     e.preventDefault();
                                                                     validation.handleSubmit();
                                                                     return false;
-                                                                }}
+                                                                }}*/
                                                             >
                                                                 {/* Email */}
                                                                 <Form.Group className="mb-3" controlId="useremail">
@@ -125,7 +143,10 @@ const Register = () => {
                                                                         name='email'
                                                                         className="form-control bg-light border-light"
                                                                         placeholder="Enter email address"
-                                                                        onChange={validation.handleChange}
+                                                                        onChange={(e) => {
+                                                                            validation.handleChange(e);
+                                                                            setEmail(e.target.value.trim()); // Ensure no extra spaces
+                                                                        }}
                                                                         onBlur={validation.handleBlur}
                                                                         value={validation.values.email || ""}
                                                                         isInvalid={validation.touched.email && !!validation.errors.email}
@@ -171,9 +192,12 @@ const Register = () => {
                                                                     <InputGroup className="position-relative auth-pass-inputgroup">
                                                                         <Form.Control onPaste={(e) => e.preventDefault()} placeholder="Enter password" id="password-input" type={!passwordShow ? "password" : "text"}
                                                                             name="password"
-                                                                            onChange={validation.handleChange}
+                                                                            onChange={(e) => {
+                                                                                validation.handleChange(e);
+                                                                                setPassword(e.target.value.trim()); // Ensure no extra spaces
+                                                                            }}
                                                                             onBlur={validation.handleBlur}
-                                                                            value={validation.values.password || ""}
+                                                                            value={password}
                                                                             isInvalid={validation.touched.password && !!validation.errors.password}
                                                                         />
                                                                         <Button variant="link" className="position-absolute end-0 top-0 text-decoration-none text-muted password-addon" type="button" onClick={() => setPasswordShow(!passwordShow)}><i className="ri-eye-fill align-middle"></i></Button>

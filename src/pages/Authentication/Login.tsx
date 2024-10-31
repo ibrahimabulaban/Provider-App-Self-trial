@@ -9,10 +9,28 @@ import { useDispatch, useSelector } from 'react-redux';
 import { createSelector } from 'reselect';
 import { loginUser, resetLoginFlag, socialLogin } from '../../slices/thunk';
 import * as Yup from "yup";
+//import { auth } from "../../firebase"
+import { auth } from '../../App'; 
+import { signInWithEmailAndPassword } from 'firebase/auth';
 
 const Login = (props:any) => {
-  document.title = "Login | Invoika Admin & Dashboard Template";
-
+  document.title = "Login | PULSE";
+    const [email,setEmail]= useState('');
+    const [password,setPassword]= useState('');
+    const signIn = (e: React.FormEvent<HTMLFormElement>) =>{
+       e.preventDefault();
+       console.log("Email before sign up:", email); // Log email
+    console.log("Password before sign up:", password); // Log password
+       signInWithEmailAndPassword(auth, email, password)
+       .then((userCredential) => {
+        console.log(userCredential)
+        props.router.navigate('/dashboard');
+       }).catch((error) =>{
+        console.error("Error Code:", error.code);
+            console.error("Error Message:", error.message);
+            console.log("not working");
+       })
+    }
   const dispatch: any = useDispatch();
     const selectAccountAndLogin = createSelector(
         (state: any) => state.Account,
@@ -50,8 +68,8 @@ const Login = (props:any) => {
         enableReinitialize: true,
 
         initialValues: {
-            email: userLogin.email ||"admin@themesbrand.com" || '',
-            password: userLogin.password ||"123456" || '',
+            email: userLogin.email ||"" || '',
+            password: userLogin.password ||"" || '',
         },
         validationSchema: Yup.object({
             email: Yup.string().required("Please Enter Your Email"),
@@ -61,14 +79,14 @@ const Login = (props:any) => {
             dispatch(loginUser(values, props.router.navigate));
         }
     });
-
+/* 
     const signIn = (type:any) => {
         dispatch(socialLogin(type, props.router.navigate));
     };
-
+*/
     //for facebook and google authentication
     const socialResponse = (type: any) => {
-        signIn(type);
+        //signIn();
     };
 
     useEffect(() => {
@@ -109,12 +127,12 @@ const Login = (props:any) => {
                                                         <div className="mt-4">
                                                         {error && error ? (<Alert variant="danger"> {error} </Alert>) : null}
                                                         <Form
-                                                            action='#'
-                                                            onSubmit={(e) => {
-                                                                e.preventDefault();
-                                                                validation.handleSubmit();
-                                                                return false;
-                                                            }}
+                                                            action='#' onSubmit={signIn}
+                                                            // (e) => {
+                                                            //     e.preventDefault();
+                                                            //     validation.handleSubmit();
+                                                            //     return false;
+                                                            // }}
                                                         >
                                                                 <Form.Group className="mb-3" controlId="username">
                                                                     <Form.Label>Email</Form.Label>
@@ -124,7 +142,10 @@ const Login = (props:any) => {
                                                                         name='email'
                                                                         className="form-control bg-light border-light password-input"
                                                                         placeholder="Enter username"
-                                                                        onChange={validation.handleChange}
+                                                                        onChange={(e) => {
+                                                                            validation.handleChange(e);
+                                                                            setEmail(e.target.value.trim()); // Ensure no extra spaces
+                                                                        }}
                                                                         onBlur={validation.handleBlur}
                                                                         value={validation.values.email || ""}
                                                                         isInvalid={
@@ -149,9 +170,12 @@ const Login = (props:any) => {
                                                                         name='password'
                                                                         className="form-control bg-light border-light pe-5 password-input"
                                                                         placeholder="Enter password"
-                                                                        value={validation.values.password || ""}
-                                                                        onChange={validation.handleChange}
+                                                                        onChange={(e) => {
+                                                                            validation.handleChange(e);
+                                                                            setPassword(e.target.value.trim()); // Ensure no extra spaces
+                                                                        }}
                                                                         onBlur={validation.handleBlur}
+                                                                        value={password}
                                                                         isInvalid={
                                                                             validation.touched.password && validation.errors.password ? true : false
                                                                         }
@@ -171,7 +195,7 @@ const Login = (props:any) => {
                                                             </Form.Check>
 
                                                                 <div className="mt-2">
-                                                                <Button className="btn btn-primary w-100" type="submit" disabled={loading}>{loading && <Spinner size='sm' /> } {" "}Sign In</Button>
+                                                                <Button className="btn btn-primary w-100" type="submit" disabled={loading} >{loading && <Spinner size='sm' /> } {" "}Sign In</Button>
                                                                 </div>
 
                                                                 <div className="mt-4 text-center">

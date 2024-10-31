@@ -4,7 +4,7 @@ import BreadCrumb from '../../../Common/BreadCrumb'
 import { Container } from 'react-bootstrap'
 
 const Users = () => {
-  document.title="User | Invoika Admin & Dashboard Template";
+  document.title="User | PULSE";
 
   const [isShow, setIsShow] = useState(false)
 

@@ -13,7 +13,7 @@ import EditPaymentSummary from '../../../../Common/CrudModal/EditPaymentSummary'
 
 const PaymentSummaryTable = () => {
 
-    document.title="Payment Summary | Invoika Admin & Dashboard Template";
+    document.title="Payment Summary | PULSE";
 
 
     const dispatch = useDispatch();
