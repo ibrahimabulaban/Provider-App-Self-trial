@@ -1,44 +1,31 @@
-import React from 'react';
+import React from "react";
 
-import './App.css';
+import "./App.css";
 //import Scss
 import "./assets/scss/themes.scss";
-import fakeBackend from './helpers/AuthType/fakeBackend';
+import fakeBackend from "./helpers/AuthType/fakeBackend";
 
 // routes
-import Route from './Routes/Index';
-
-
+import Route from "./Routes/Index";
 
 // Import Firebase Configuration file
- import { initFirebaseBackend } from "./helpers/firebase_helper";
+import { initFirebaseBackend } from "./helpers/firebase_helper";
 
-// Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-import { getAuth } from "firebase/auth";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyDC-hDD-NrNONncGZ4cde1sHFEo7aSkD_k",
-  authDomain: "pulse-provider-app.firebaseapp.com",
-  projectId: "pulse-provider-app",
-  storageBucket: "pulse-provider-app.appspot.com",
-  messagingSenderId: "257250602951",
-  appId: "1:257250602951:web:b7fa6e6c33531118c0b3e2"
+  apiKey: process.env.REACT_APP_APIKEY,
+  authDomain: process.env.REACT_APP_AUTHDOMAIN,
+  databaseURL: process.env.REACT_APP_DATABASEURL,
+  projectId: process.env.REACT_APP_PROJECTID,
+  storageBucket: process.env.REACT_APP_STORAGEBUCKET,
+  messagingSenderId: process.env.REACT_APP_MESSAGINGSENDERID,
+  appId: process.env.REACT_APP_APPID,
+  measurementId: process.env.REACT_APP_MEASUREMENTID,
 };
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
+// init firebase backend
+initFirebaseBackend(firebaseConfig);
 
-export { auth };
-
-// // init firebase backend
-// initFirebaseBackend(firebaseConfig);
-
-
+fakeBackend();
 
 function App() {
   return (

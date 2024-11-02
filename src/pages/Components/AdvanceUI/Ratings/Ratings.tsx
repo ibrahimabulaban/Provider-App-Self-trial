@@ -10,7 +10,7 @@ import { Rating } from "react-simple-star-rating";
 
 const RatingRtr = () => {
 
-  document.title = " Ratings | PULSE";
+  document.title = " Ratings | Invoika Admin & Dashboard Template";
 
   return (
     <React.Fragment>

@@ -5,7 +5,7 @@ import Dropzone from 'react-dropzone';
 import { Link } from 'react-router-dom';
 
 const NewTransaction = () => {
-    document.title="Add Product | PULSE";
+    document.title="Add Product | Invoika Admin & Dashboard Template";
 
     const [selectedFiles, setselectedFiles] = useState<any>([]);
 

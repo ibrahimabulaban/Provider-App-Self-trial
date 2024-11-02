@@ -7,6 +7,28 @@ import Signin from "../pages/AuthenticationInner/Signin";
 import Signup from "../pages/AuthenticationInner/Signup";
 import PasswordReset from "../pages/AuthenticationInner/PasswordReset";
 import Lockscreen from "../pages/AuthenticationInner/Lockscreen";
+import Alerts from "../pages/Components/BootstrapUI/Alert/index";
+import Badges from "../pages/Components/BootstrapUI/Badges/index";
+import Button from "../pages/Components/BootstrapUI/Buttons/index";
+import Colors from "../pages/Components/BootstrapUI/Colors/index";
+import Cards from "../pages/Components/BootstrapUI/Cards/index";
+import Carousel from "../pages/Components/BootstrapUI/Carousel/index";
+import DropDown from "../pages/Components/BootstrapUI/Dropdowns/index";
+import Grid from "../pages/Components/BootstrapUI/Grid/index";
+import Images from "../pages/Components/BootstrapUI/Images/index";
+import Tabs from "../pages/Components/BootstrapUI/Tabs/index";
+import AccordianCollapse from "../pages/Components/BootstrapUI/Accordion&Collapse/index";
+import Modals from "../pages/Components/BootstrapUI/Modals/index";
+import Offcanvas from "../pages/Components/BootstrapUI/Offcanvas/index";
+import PlaceHolder from "../pages/Components/BootstrapUI/Placeholder/index";
+import Progress from "../pages/Components/BootstrapUI/Progress/index";
+import Notifications from "../pages/Components/BootstrapUI/Notifications/index";
+import Media from "../pages/Components/BootstrapUI/MediaObject/index";
+import Video from "../pages/Components/BootstrapUI/EmbededVideo/index";
+import Typography from "../pages/Components/BootstrapUI/Typography/index";
+import Lists from "../pages/Components/BootstrapUI/Lists/index";
+import General from "../pages/Components/BootstrapUI/General/index";
+import Utilities from "../pages/Components/BootstrapUI/Utilities/index";
 import ScrollBar from "../pages/Components/AdvanceUI/Scrollbar/index";
 import SwiperSlider from "../pages/Components/AdvanceUI/Swiper/index";
 import Ratings from "../pages/Components/AdvanceUI/Ratings/index";
@@ -101,7 +123,72 @@ const authProtectedRoutes: Array<RouteObject> = [
 
     //   Bootstrap UI
     //  Alerts
-    
+    { path: "/ui-alerts", component: <Alerts /> },
+
+    //  Badges
+    { path: "/ui-badges", component: <Badges /> },
+
+    //  Buttons
+    { path: "/ui-buttons", component: <Button /> },
+
+    //  Colors
+    { path: "/ui-colors", component: <Colors /> },
+
+    //  Cards
+    { path: "/ui-cards", component: <Cards /> },
+
+    //  Carousel
+    { path: "/ui-carousel", component: <Carousel /> },
+
+    //  Dropdowns
+    { path: "/ui-dropdowns", component: <DropDown /> },
+
+    //  Grid
+    { path: "/ui-grid", component: <Grid /> },
+
+    //  Images
+    { path: "/ui-images", component: <Images /> },
+
+    //  Tabs
+    { path: "/ui-tabs", component: <Tabs /> },
+
+    //  Accordion & Collapse
+    { path: "/ui-accordions", component: <AccordianCollapse /> },
+
+    //  Modals
+    { path: "/ui-modals", component: <Modals /> },
+
+    //  Offcanvas
+    { path: "/ui-offcanvas", component: <Offcanvas /> },
+
+    //  Placeholder
+    { path: "/ui-placeholders", component: <PlaceHolder /> },
+
+    //  Progress
+    { path: "/ui-progress", component: <Progress /> },
+
+    //  Notifications
+    { path: "/ui-notifications", component: <Notifications /> },
+
+    //  Media Object
+    { path: "/ui-media", component: <Media /> },
+
+    //  Embeded Video
+    { path: "/ui-embed-video", component: <Video /> },
+
+    //  Typography
+    { path: "/ui-typography", component: <Typography /> },
+
+    //  Lists   
+    { path: "/ui-lists", component: <Lists /> },
+
+
+    //  General
+    { path: "/ui-general", component: <General /> },
+
+
+    //  Utilities
+    { path: "/ui-utilities", component: <Utilities /> },
 
     // Advance UI
 

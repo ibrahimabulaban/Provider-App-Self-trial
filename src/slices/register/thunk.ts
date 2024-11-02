@@ -10,7 +10,7 @@ import {
   registerUserSuccessful,
   registerUserFailed,
   resetRegisterFlagChange,
-  apiErrorChange
+  apiErrorChange,
 } from "./reducer";
 
 // initialize relavant method of both Auth
@@ -24,7 +24,7 @@ export const registerUser = (user: any) => async (dispatch: any) => {
     if (process.env.REACT_APP_DEFAULTAUTH === "firebase") {
       response = fireBaseBackend.registerUser(user.email, user.password);
     } else if (process.env.REACT_APP_DEFAULTAUTH === "jwt") {
-      response = postJwtRegister('/post-jwt-register', user);
+      response = postJwtRegister("/post-jwt-register", user);
     } else if (process.env.REACT_APP_DEFAULTAUTH) {
       response = postFakeRegister(user);
       const data: any = await response;

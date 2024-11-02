@@ -4,7 +4,7 @@ import { Container } from 'react-bootstrap';
 import InvoiceTable from './InvoiceTable';
 
 const Invoice = () => {
-  document.title="Invoice | PULSE";
+  document.title="Invoice | Invoika Admin & Dashboard Template";
 
   return (
     <React.Fragment>

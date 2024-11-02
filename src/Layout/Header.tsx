@@ -101,7 +101,7 @@ const Header = ({onChangeLayoutMode, layoutModeType}:any) => {
                                     <img src={logolight} alt="" height="21" />
                                 </span>
                             </Link>
-                         </div>
+                        </div>
 
                             <Button variant="link" size="sm" type="button" className="btn btn-sm px-3 fs-16 header-item vertical-menu-btn topnav-hamburger" id="topnav-hamburger-icon"
                                 onClick={toogleMenuBtn}

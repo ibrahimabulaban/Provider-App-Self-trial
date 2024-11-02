@@ -7,7 +7,7 @@ import TableContainer from '../../../Common/Tabledata/TableContainer';
 
 
 const TransactionList = () => {
-    document.title="Transaction List | PULSE";
+    document.title="Transaction List | Invoika Admin & Dashboard Template";
 
     interface columnsType {
         Header: any,

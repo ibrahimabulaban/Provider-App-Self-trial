@@ -37,7 +37,6 @@ const Sidebar = ({ layoutType }: any) => {
   return (
     <React.Fragment>
       <div className="app-menu navbar-menu">
-        {/*  to add the logo image on top of the side nav bar
         <div className="navbar-brand-box">
           <Link to="/" className="logo logo-dark">
             <span className="logo-sm">
@@ -65,7 +64,6 @@ const Sidebar = ({ layoutType }: any) => {
             <i className="ri-record-circle-line"></i>
           </button>
         </div>
-        */}
         {/* <SimpleBar id="scrollbar" className="h-100">
             <Container fluid>
               <div id="two-column-menu"></div>
@@ -92,7 +90,7 @@ const Sidebar = ({ layoutType }: any) => {
                   <VerticalLayout layoutType={layoutType} />
                   <div className="help-box text-center">
                       <img src={createInvoice} className="img-fluid" alt="" aria-expanded="false" />
-                      <p className="mb-3 mt-2 text-muted">Want to create an Invoice?</p>
+                      <p className="mb-3 mt-2 text-muted">Upgrade To Pro For More Features</p>
                       <div className="mt-3">
                           <Link to="/invoice-add" className="btn btn-primary"> Create Invoice</Link>
                       </div>

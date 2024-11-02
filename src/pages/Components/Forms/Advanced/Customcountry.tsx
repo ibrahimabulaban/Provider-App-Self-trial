@@ -9,7 +9,7 @@ import country from '../../../../Common/data/country'
 import usflag from '../../../../assets/images/flags/us.svg'
 
 const Customcountry = () => {
-    document.title = " Form Advanced | PULSE";
+    document.title = " Form Advanced | Invoika Admin & Dashboard Template";
 
 
     // Country Change States

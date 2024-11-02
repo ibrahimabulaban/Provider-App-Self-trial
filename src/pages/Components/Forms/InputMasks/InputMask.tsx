@@ -5,7 +5,7 @@ import Cleave from 'cleave.js/react';
 import "cleave.js/dist/addons/cleave-phone.in";
 
 const InputMask = () => {
-  document.title=" Input Masks | PULSE";
+  document.title=" Input Masks | Invoika Admin & Dashboard Template";
 
   const [date, setDate] = useState("");
   const [dateFormat, setDateFormat] = useState("");

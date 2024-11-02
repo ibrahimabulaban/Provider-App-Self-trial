@@ -8,7 +8,7 @@ import SalesRevenue from './SalesRevenue';
 
 
 const Dashboard = () => {
-  document.title = "Dashboard | PULSE";
+  document.title = "Dashboard | Invoika Admin & Dashboard Template";
 
   return (
     <React.Fragment>

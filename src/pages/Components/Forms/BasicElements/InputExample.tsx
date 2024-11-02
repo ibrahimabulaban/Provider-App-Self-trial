@@ -4,7 +4,7 @@ import { Card, Col, Form, Row } from 'react-bootstrap';
 import { InputExample } from './BasicElementCode';
 
 const InputExamples = () => {
-    document.title=" Basic Elements | PULSE";
+    document.title=" Basic Elements | Invoika Admin & Dashboard Template";
 
     return (
         <React.Fragment>

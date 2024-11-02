@@ -3,7 +3,7 @@ import Breadcrumb from '../../../../Common/BreadCrumb';
 import { Card, Col, Container, Row } from 'react-bootstrap';
 
 const MaterialDesign = () => {
-  document.title=" Material Design Icons | PULSE";
+  document.title=" Material Design Icons | Invoika Admin & Dashboard Template";
 
   return (
     <React.Fragment>

@@ -9,28 +9,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { createSelector } from 'reselect';
 import { loginUser, resetLoginFlag, socialLogin } from '../../slices/thunk';
 import * as Yup from "yup";
-//import { auth } from "../../firebase"
-import { auth } from '../../App'; 
-import { signInWithEmailAndPassword } from 'firebase/auth';
 
 const Login = (props:any) => {
-  document.title = "Login | PULSE";
-    const [email,setEmail]= useState('');
-    const [password,setPassword]= useState('');
-    const signIn = (e: React.FormEvent<HTMLFormElement>) =>{
-       e.preventDefault();
-       console.log("Email before sign up:", email); // Log email
-    console.log("Password before sign up:", password); // Log password
-       signInWithEmailAndPassword(auth, email, password)
-       .then((userCredential) => {
-        console.log(userCredential)
-        props.router.navigate('/dashboard');
-       }).catch((error) =>{
-        console.error("Error Code:", error.code);
-            console.error("Error Message:", error.message);
-            console.log("not working");
-       })
-    }
+  document.title = "Login | Invoika Admin & Dashboard Template";
+
   const dispatch: any = useDispatch();
     const selectAccountAndLogin = createSelector(
         (state: any) => state.Account,
@@ -68,8 +50,8 @@ const Login = (props:any) => {
         enableReinitialize: true,
 
         initialValues: {
-            email: userLogin.email ||"" || '',
-            password: userLogin.password ||"" || '',
+            email: userLogin.email ||"admin@themesbrand.com" || '',
+            password: userLogin.password ||"123456" || '',
         },
         validationSchema: Yup.object({
             email: Yup.string().required("Please Enter Your Email"),
@@ -79,14 +61,14 @@ const Login = (props:any) => {
             dispatch(loginUser(values, props.router.navigate));
         }
     });
-/* 
+
     const signIn = (type:any) => {
         dispatch(socialLogin(type, props.router.navigate));
     };
-*/
+
     //for facebook and google authentication
     const socialResponse = (type: any) => {
-        //signIn();
+        signIn(type);
     };
 
     useEffect(() => {
@@ -106,14 +88,14 @@ const Login = (props:any) => {
                             <div className="auth-full-page-content d-flex min-vh-100 py-sm-5 py-4">
                                 <div className="w-100">
                                     <div className="d-flex flex-column h-100 py-0 py-xl-4">
-                                        {/* 
+
                                         <div className="text-center mb-5">
                                             <Link to="/">
                                                 <span className="logo-lg">
                                                     <img src={logoDark} alt="" height="21" />
                                                 </span>
                                             </Link>
-                                        </div>*/}
+                                        </div>
 
                                         <Card className="my-auto overflow-hidden">
                                             <Row className="g-0">
@@ -121,18 +103,18 @@ const Login = (props:any) => {
                                                     <Card.Body className="p-lg-5 p-4">
                                                         <div className="text-center">
                                                             <h5 className="mb-0">Welcome Back !</h5>
-                                                            <p className="text-muted mt-2">Sign in to continue to PULSE.</p>
+                                                            <p className="text-muted mt-2">Sign in to continue to Invoika.</p>
                                                         </div>
 
                                                         <div className="mt-4">
                                                         {error && error ? (<Alert variant="danger"> {error} </Alert>) : null}
                                                         <Form
-                                                            action='#' onSubmit={signIn}
-                                                            // (e) => {
-                                                            //     e.preventDefault();
-                                                            //     validation.handleSubmit();
-                                                            //     return false;
-                                                            // }}
+                                                            action='#'
+                                                            onSubmit={(e) => {
+                                                                e.preventDefault();
+                                                                validation.handleSubmit();
+                                                                return false;
+                                                            }}
                                                         >
                                                                 <Form.Group className="mb-3" controlId="username">
                                                                     <Form.Label>Email</Form.Label>
@@ -142,10 +124,7 @@ const Login = (props:any) => {
                                                                         name='email'
                                                                         className="form-control bg-light border-light password-input"
                                                                         placeholder="Enter username"
-                                                                        onChange={(e) => {
-                                                                            validation.handleChange(e);
-                                                                            setEmail(e.target.value.trim()); // Ensure no extra spaces
-                                                                        }}
+                                                                        onChange={validation.handleChange}
                                                                         onBlur={validation.handleBlur}
                                                                         value={validation.values.email || ""}
                                                                         isInvalid={
@@ -170,12 +149,9 @@ const Login = (props:any) => {
                                                                         name='password'
                                                                         className="form-control bg-light border-light pe-5 password-input"
                                                                         placeholder="Enter password"
-                                                                        onChange={(e) => {
-                                                                            validation.handleChange(e);
-                                                                            setPassword(e.target.value.trim()); // Ensure no extra spaces
-                                                                        }}
+                                                                        value={validation.values.password || ""}
+                                                                        onChange={validation.handleChange}
                                                                         onBlur={validation.handleBlur}
-                                                                        value={password}
                                                                         isInvalid={
                                                                             validation.touched.password && validation.errors.password ? true : false
                                                                         }
@@ -195,7 +171,7 @@ const Login = (props:any) => {
                                                             </Form.Check>
 
                                                                 <div className="mt-2">
-                                                                <Button className="btn btn-primary w-100" type="submit" disabled={loading} >{loading && <Spinner size='sm' /> } {" "}Sign In</Button>
+                                                                <Button className="btn btn-primary w-100" type="submit" disabled={loading}>{loading && <Spinner size='sm' /> } {" "}Sign In</Button>
                                                                 </div>
 
                                                                 <div className="mt-4 text-center">
@@ -235,7 +211,11 @@ const Login = (props:any) => {
                                             </Row>
                                         </Card>
 
-                                       
+                                        <div className="mt-5 text-center">
+                                            <p className="mb-0 text-muted">
+                                                &copy; {new Date().getFullYear()} Invoika. Crafted with <i className="mdi mdi-heart text-danger"></i> by Themesbrand
+                                            </p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

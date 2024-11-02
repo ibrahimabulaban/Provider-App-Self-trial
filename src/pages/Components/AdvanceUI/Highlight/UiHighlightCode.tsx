@@ -7,7 +7,7 @@ const htmlHighlightCode =
 <!DOCTYPE html>
 <html>
     <head>
-        <title>PULSE</title>
+        <title>Invoika Admin & Dashboard Template</title>
     </head>
     <body>
         <div>
